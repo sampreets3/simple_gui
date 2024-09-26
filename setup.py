@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'ros2_hmi_node = simple_gui.main:main'
+            'ros2_hmi_node = simple_gui.main:main',
+            'add_two_ints_server = simple_gui.add_two_ints_server:main'
         ],
     },
 )

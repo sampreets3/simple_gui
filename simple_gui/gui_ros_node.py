@@ -13,10 +13,14 @@ class MyGuiNode(Node):
 
         # Define our GUI button callbacks here
         self.ui.btn_publisher.clicked.connect(self.publisher_ros2_callback)
+        self.ui.btn_call_add_two_ints_srv.clicked.connect(self.add_two_ints_client_callback)
 
         # Define ROS2 publishers and subscribers here
         self._btn_publisher = self.create_publisher(Int32, '/chatter', 10)
         self._subscriber    = self.create_subscription(Int32, '/chatter', self.subscriber_callback, 1)
+
+        # Define ROS 2 service servers and clients here
+        self.__add_two_ints_client = self.create_client(AddTwoInts, 'add_two_ints')
 
         # Define ROS 2 timers here
         self._timer         = self.create_timer(1.0, self.timer_callback)
@@ -73,5 +77,37 @@ class MyGuiNode(Node):
         self.ui.robot_state_theta.setText(f'{self._robot_state[2]:.4f}')
 
         self.get_logger().info(f'Robot state: [x: {self._robot_state[0] :.4f}, y: {self._robot_state[1]:.4f}, theta: {self._robot_state[2]:.4f}]')
+
+    def add_two_ints_client_callback(self):
+        """
+        Sends a request to the AddTwoInts service server
+        with the values of the spin boxes defined in the
+        GUI. 
+
+        NOTE This function sends a request and then exits.
+        The received response is handled by a separate function.
+        """
+        
+        # Create an empty request object
+        request = AddTwoInts.Request()
+
+        # Read the value of the spinbox and store it directly in the request field
+        request.a = int(self.ui.spinBox_num_a.value()) 
+        request.b = int(self.ui.spinBox_num_b.value())
+
+        # Send the request via the service client, and store it in a future object
+        future = self.__add_two_ints_client.call_async(request)
+
+        # We add a callback function to be executed when the server returns a response
+        future.add_done_callback(self.add_two_ints_client_response_callback)
+
+
+    def add_two_ints_client_response_callback(self, future):
+        """
+        When the service returns a response, we update the label
+        to show the result.
+        """
+        response = future.result()
+        self.ui.label_result_add_two_ints.setText(f'{response.sum}')
 
 

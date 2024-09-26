@@ -1,8 +1,6 @@
-import sys
-import rclpy
 from rclpy.node import Node
 
-from std_msgs.msg import Int32
+from example_interfaces.msg import Int32
 
 from PyQt5 import QtGui
 

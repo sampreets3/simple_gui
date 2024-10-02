@@ -34,3 +34,15 @@ pyuic5 -x simple.ui -o simple_gui.py
 From there on, you can continue to edit the `gui_ros_node` file, in order to define the event callbacks and other modifications you might want to make. It is advised to always name the elements you create _(PushButtons, TextLabels, etc.)_, so that you can very easily refer to them as inside the `MyGuiNode` class as `self.ui.<name-of-push-button>, self.ui.<name-of-textlabel>`, and so on.
 
 The rest of the package should not need to be changed, unless you want to add some helper files inside the module. Then you should add them into the `setup.py` file in the `py_modules` section.
+
+---
+
+## Features
+
+- Publish data to a pre-defined topic at the press of a button.
+- Subscribe to incoming data from a topic and display as a textLabel.
+- Periodically update the state of the robot using a ROS timer.
+- Accept an input from a spinbox, to call a ROS service.
+- Update textLabel with the response of the service.
+
+---

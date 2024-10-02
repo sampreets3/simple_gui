@@ -108,6 +108,7 @@ class MyGuiNode(Node):
         to show the result.
         """
         response = future.result()
+        self.get_logger().info(f'add_two_ints service returned response: {response.sum}')
         self.ui.label_result_add_two_ints.setText(f'{response.sum}')
 
 

@@ -34,8 +34,8 @@ class WorldCanvas(QWidget):
         Plots the robot's pose on the map. 
         """
         self.ax.clear()
-        self.ax.set_xlim(-10, 10)  # Keep X-axis fixed
-        self.ax.set_ylim(-10, 10)  # Keep Y-axis fixed
+        self.ax.set_xlim(-10, 10)
+        self.ax.set_ylim(-10, 10)
         
         self.ax.plot(x, y, scalex=2.0, scaley=2.0, marker='o', linestyle='-', label='Robot Position')
         arrow_length = 1.0

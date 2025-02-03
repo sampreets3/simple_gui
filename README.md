@@ -20,6 +20,17 @@ This should open up a small HMI as shown below:
     <img src="res/demo.gif" width="600" height="332">
 </p>
 
+## Usage Instruction (if using Docker)
+
+1. Clone this repository in the root of your ROS 2 workspace: `git clone https://github.com/sampreets3/simple_gui.git`
+1. Navigate to the root of the `simple_gui` package:   `cd <ros2_ws>/src/simple_gui`
+1. Build the image from the Dockerfile provided :   `docker build -t image_simple_gui ./docker/`
+1. Run the container using the script provided :  `chmod +x ./docker/run_ros2_container.sh && ./docker/run_ros2_container.sh`
+1. Build the workspace inside the container : `colcon build && . install/setup.bash`
+1. Launch the application : `ros2 launch simple_gui simple_gui.launch.py`
+
+This would open up the same HMI as mentioned before.
+
 ---
 
 ## Modify the Application

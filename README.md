@@ -2,6 +2,8 @@
 
 A simple demo application using PyQt5 for creating HMIs in ROS2.
 
+The code has been tested to function with ROS 2 Humble Hawksbill.
+
 ---
 
 ## Usage Instruction
@@ -44,5 +46,5 @@ The rest of the package should not need to be changed, unless you want to add so
 - Periodically update the state of the robot using a ROS timer.
 - Accept an input from a spinbox, to call a ROS service.
 - Update textLabel with the response of the service.
-
+- Display the pose of the robot on a map.
 ---

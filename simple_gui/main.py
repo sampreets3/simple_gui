@@ -7,7 +7,7 @@ from threading import Thread
 
 from .simple_gui import Ui_MainWindow
 from .gui_ros_node import MyGuiNode
-
+from .world_canvas import WorldCanvas
 
 def main(args=None):
     rclpy.init(args=args)

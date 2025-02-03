@@ -76,6 +76,8 @@ class MyGuiNode(Node):
         self.ui.robot_state_y.setText(f'{self._robot_state[1]:.4f}')
         self.ui.robot_state_theta.setText(f'{self._robot_state[2]:.4f}')
 
+        self.ui.robot_map.plot_robot_pose(self._robot_state[0], self._robot_state[1], self._robot_state[2])
+
         self.get_logger().info(f'Robot state: [x: {self._robot_state[0] :.4f}, y: {self._robot_state[1]:.4f}, theta: {self._robot_state[2]:.4f}]')
 
     def add_two_ints_client_callback(self):
